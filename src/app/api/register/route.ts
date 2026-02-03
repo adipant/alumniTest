@@ -77,16 +77,6 @@ async function uploadToGoogleDrive(
   const fileId = file.data.id;
   console.log('File uploaded successfully, ID:', fileId);
 
-  // Make the file publicly accessible
-  await drive.permissions.create({
-    fileId: fileId!,
-    requestBody: {
-      role: 'reader',
-      type: 'anyone',
-    },
-    supportsAllDrives: true,
-  });
-
   // Return the direct image URL for embedding
   // Using the thumbnail link format which works better for displaying images
   return `https://drive.google.com/thumbnail?id=${fileId}&sz=w400`;
