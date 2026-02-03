@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { useRouter } from 'next/navigation';
 import { Check, ChevronLeft, ChevronRight, User, Briefcase, CreditCard, PartyPopper, Loader2 } from 'lucide-react';
 import PhotoUpload from './PhotoUpload';
-import PaymentForm from './PaymentForm';
+// import PaymentForm from './PaymentForm';
 
 const practiceAreas = [
   'Corporate Law',
@@ -53,14 +53,14 @@ type FormData = z.infer<typeof formSchema>;
 const steps = [
   { id: 1, name: 'Photo & Batch', icon: User },
   { id: 2, name: 'Profile Details', icon: Briefcase },
-  { id: 3, name: 'Payment', icon: CreditCard },
+  // { id: 3, name: 'Payment', icon: CreditCard },
 ];
 
 const RegistrationForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
-  const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
+  // const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isComplete, setIsComplete] = useState(false);
@@ -100,7 +100,12 @@ const RegistrationForm = () => {
 
     const isValid = await trigger(fieldsToValidate);
     if (isValid) {
-      setCurrentStep((prev) => Math.min(prev + 1, 3));
+      if (currentStep === 2) {
+        // Submit the form
+        await handleSubmitForm();
+      } else {
+        setCurrentStep((prev) => Math.min(prev + 1, 2));
+      }
     }
   };
 
@@ -108,7 +113,7 @@ const RegistrationForm = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 1));
   };
 
-  const handlePaymentSuccess = async () => {
+  const handleSubmitForm = async () => {
     const formData = getValues();
     
     setIsSubmitting(true);
@@ -410,46 +415,8 @@ const RegistrationForm = () => {
           </div>
         )}
 
-        {/* Step 3: Payment */}
-        {currentStep === 3 && (
-          <div className="animate-fade-in-up">
-            <h2 className="text-2xl font-bold text-[#1a1a2e] text-center mb-2">
-              Complete Your Registration
-            </h2>
-            <p className="text-gray-500 text-center mb-8">
-              One-time registration fee to join the alumni network
-            </p>
-
-            {/* Error Message */}
-            {submitError && (
-              <div className="max-w-md mx-auto mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
-                <p className="text-red-600 text-sm text-center">{submitError}</p>
-              </div>
-            )}
-
-            {/* Submitting State */}
-            {isSubmitting && (
-              <div className="max-w-md mx-auto mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl">
-                <div className="flex items-center justify-center gap-2">
-                  <Loader2 className="w-5 h-5 text-blue-600 animate-spin" />
-                  <p className="text-blue-600 text-sm">Registering... Please wait.</p>
-                </div>
-              </div>
-            )}
-
-            <div className="max-w-md mx-auto">
-              <PaymentForm
-                onPaymentSuccess={handlePaymentSuccess}
-                amount={1999}
-                isProcessing={isPaymentProcessing || isSubmitting}
-                setIsProcessing={setIsPaymentProcessing}
-              />
-            </div>
-          </div>
-        )}
-
         {/* Navigation Buttons */}
-        {currentStep < 3 && (
+        {currentStep < 2 && (
           <div className="flex justify-between mt-10 pt-6 border-t border-gray-100">
             <button
               onClick={handlePrevStep}
@@ -473,19 +440,31 @@ const RegistrationForm = () => {
           </div>
         )}
 
-        {currentStep === 3 && (
-          <div className="mt-6 pt-6 border-t border-gray-100">
+        {currentStep === 2 && (
+          <div className="flex justify-between mt-10 pt-6 border-t border-gray-100">
             <button
               onClick={handlePrevStep}
-              disabled={isPaymentProcessing}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all ${
-                isPaymentProcessing
-                  ? 'text-gray-300 cursor-not-allowed'
-                  : 'text-gray-600 hover:bg-gray-100'
-              }`}
+              className="flex items-center gap-2 px-6 py-3 text-gray-600 hover:bg-gray-100 rounded-xl font-medium transition-all"
             >
               <ChevronLeft className="w-5 h-5" />
-              Back to Profile
+              Back
+            </button>
+            <button
+              onClick={handleNextStep}
+              disabled={isSubmitting}
+              className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-semibold rounded-xl hover:shadow-lg hover:shadow-[#d4af37]/30 transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  Submitting...
+                </>
+              ) : (
+                <>
+                  Submit Registration
+                  <ChevronRight className="w-5 h-5" />
+                </>
+              )}
             </button>
           </div>
         )}
