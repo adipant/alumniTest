@@ -107,10 +107,18 @@ export async function POST(request: NextRequest) {
     // Generate unique ID for the member
     const memberId = generateId();
     const timestamp = new Date().toISOString();
+    
     // Upload image to Google Drive
-    const extension = getExtension(imageBase64);
-    const fileName = `${memberId}.${extension}`;
-    const imageUrl = await uploadToGoogleDrive(imageBase64, fileName);
+    let imageUrl = '';
+    try {
+      const extension = getExtension(imageBase64);
+      const fileName = `${memberId}.${extension}`;
+      imageUrl = await uploadToGoogleDrive(imageBase64, fileName);
+    } catch (uploadError) {
+      console.error('Image upload error:', uploadError);
+      // Continue without image URL if upload fails
+      imageUrl = '';
+    }
 
     // Add data to Google Sheets
     const sheets = getGoogleSheets();
