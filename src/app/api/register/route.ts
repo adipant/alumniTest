@@ -107,6 +107,7 @@ export async function POST(request: NextRequest) {
     // Generate unique ID for the member
     const memberId = generateId();
     const timestamp = new Date().toISOString();
+    console.log('Processing registration:', memberId);
     
     // Upload image to Google Drive
     let imageUrl = '';
@@ -114,6 +115,7 @@ export async function POST(request: NextRequest) {
       const extension = getExtension(imageBase64);
       const fileName = `${memberId}.${extension}`;
       imageUrl = await uploadToGoogleDrive(imageBase64, fileName);
+      console.log('Image uploaded successfully:', imageUrl);
     } catch (uploadError) {
       console.error('Image upload error:', uploadError);
       // Continue without image URL if upload fails
@@ -134,6 +136,7 @@ export async function POST(request: NextRequest) {
       );
 
       if (!sheetExists) {
+        console.log('Sheet does not exist, creating:', SHEET_NAME);
         // Create the sheet
         await sheets.spreadsheets.batchUpdate({
           spreadsheetId: SPREADSHEET_ID,
@@ -176,10 +179,12 @@ export async function POST(request: NextRequest) {
       }
     } catch (sheetError) {
       console.error('Error checking/creating sheet:', sheetError);
+      throw sheetError;
     }
 
     // Append the new member data
-    await sheets.spreadsheets.values.append({
+    console.log('Appending data to sheet:', SHEET_NAME);
+    const appendResponse = await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
       range: `${SHEET_NAME}!A:K`,
       valueInputOption: 'RAW',
@@ -201,6 +206,8 @@ export async function POST(request: NextRequest) {
         ],
       },
     });
+    
+    console.log('Data appended successfully:', appendResponse.data);
 
     return NextResponse.json({
       success: true,
