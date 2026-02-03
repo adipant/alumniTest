@@ -61,7 +61,7 @@ async function uploadToGoogleDrive(
     body: stream,
   };
 
-  const createParams: Parameters<typeof drive.files.create>[0] = {
+  const createParams = {
     requestBody: fileMetadata,
     media: media,
     fields: 'id, webViewLink, webContentLink',

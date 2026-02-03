@@ -28,7 +28,7 @@ const Navbar = () => {
 
   const actionButtons = [
     // { name: 'Login', href: '/login', isOutline: true },
-    { name: 'Register', href: '/register', isButton: true },
+    { name: 'Register', href: '/register', isButton: true, isOutline: false },
   ];
 
   return (
