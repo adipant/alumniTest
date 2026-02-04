@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       {/* <DistinguishedAlumniSection /> */}
       <UpcomingEvents />
-      <LatestNews />
+      {/* <LatestNews /> */}
       {/* <CallToAction /> */}
     </>
   );
