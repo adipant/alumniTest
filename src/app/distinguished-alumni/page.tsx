@@ -27,8 +27,7 @@ export default function DistinguishedAlumniPage() {
               Distinguished <span className="gradient-text">Alumni</span>
             </h1>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              Celebrating the remarkable achievements of our legal alumni who have made 
-              extraordinary contributions to the judiciary, legal practice, and the pursuit of justice.
+              Celebrating the remarkable achievements of our extraordinary alumni.
             </p>
           </div>
 

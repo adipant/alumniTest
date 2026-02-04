@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { getGoogleSheets, getGoogleDrive, SPREADSHEET_ID, SHEET_NAME, DRIVE_FOLDER_ID } from '@/lib/google';
 import { Readable } from 'stream';
 
@@ -208,6 +209,9 @@ export async function POST(request: NextRequest) {
     });
     
     console.log('Data appended successfully:', appendResponse.data);
+
+    // Invalidate the alumni data cache
+    revalidatePath('/api/alumni');
 
     return NextResponse.json({
       success: true,

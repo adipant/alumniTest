@@ -52,7 +52,7 @@ const Footer = () => {
               </div>
               <div>
                 <span className="text-xl font-bold">
-                  ILS Delhi Alumni<span className="text-[#d4af37] ml-1">Connect</span>
+                  ILSians Delhi
                 </span>
               </div>
             </Link>
@@ -122,25 +122,25 @@ const Footer = () => {
               Contact Us
             </h3>
             <ul className="space-y-4">
-              <li className="flex items-start space-x-3">
+              {/* <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-[#d4af37] mt-0.5 flex-shrink-0" />
                 <span className="text-gray-400 text-sm">
                   123 University Avenue<br />
                   Academic City, ST 12345
                 </span>
-              </li>
+              </li> */}
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-[#d4af37] flex-shrink-0" />
-                <a href="mailto:alumni@university.edu" className="text-gray-400 text-sm hover:text-[#d4af37] transition-colors">
-                  alumni@university.edu
+                <a href="mailto:delhi.ilsians@gmail.com" className="text-gray-400 text-sm hover:text-[#d4af37] transition-colors">
+                  delhi.ilsians@gmail.com
                 </a>
               </li>
-              <li className="flex items-center space-x-3">
+              {/* <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-[#d4af37] flex-shrink-0" />
                 <a href="tel:+1234567890" className="text-gray-400 text-sm hover:text-[#d4af37] transition-colors">
                   +1 (234) 567-890
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
@@ -149,7 +149,7 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm flex items-center">
-              © {currentYear} ILS Delhi. Made with 
+              © {currentYear} ILSians Delhi. Made with 
               <Heart className="w-4 h-4 text-[#d4af37] mx-1 fill-current" /> 
               for our community
             </p>

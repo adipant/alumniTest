@@ -196,7 +196,7 @@ const RegistrationForm = () => {
         <div className="mt-8">
           <a
             href="/"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-semibold rounded-full hover:shadow-lg transition-all"
+            className="inline-block px-8 py-3 bg-linear-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-semibold rounded-full hover:shadow-lg transition-all"
           >
             Return to Home
           </a>
@@ -218,7 +218,7 @@ const RegistrationForm = () => {
                     currentStep > step.id
                       ? 'bg-green-500 text-white'
                       : currentStep === step.id
-                      ? 'bg-gradient-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e]'
+                      ? 'bg-linear-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e]'
                       : 'bg-gray-100 text-gray-400'
                   }`}
                 >
@@ -432,7 +432,7 @@ const RegistrationForm = () => {
             </button>
             <button
               onClick={handleNextStep}
-              className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-semibold rounded-xl hover:shadow-lg hover:shadow-[#d4af37]/30 transform hover:scale-105 transition-all"
+              className="flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-semibold rounded-xl hover:shadow-lg hover:shadow-[#d4af37]/30 transform hover:scale-105 transition-all"
             >
               Continue
               <ChevronRight className="w-5 h-5" />
@@ -452,7 +452,7 @@ const RegistrationForm = () => {
             <button
               onClick={handleNextStep}
               disabled={isSubmitting}
-              className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-semibold rounded-xl hover:shadow-lg hover:shadow-[#d4af37]/30 transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-8 py-3 bg-linear-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-semibold rounded-xl hover:shadow-lg hover:shadow-[#d4af37]/30 transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>

@@ -48,7 +48,7 @@ const CallToAction = () => {
             <ul className="space-y-4 mb-10">
               {benefits.map((benefit, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-[#d4af37] flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-6 h-6 text-[#d4af37] shrink-0 mt-0.5" />
                   <span className="text-gray-300">{benefit}</span>
                 </li>
               ))}
@@ -57,7 +57,7 @@ const CallToAction = () => {
             {/* CTA Button */}
             <Link
               href="/register"
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-bold rounded-full hover:shadow-2xl hover:shadow-[#d4af37]/30 transform hover:scale-105 transition-all duration-300"
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-bold rounded-full hover:shadow-2xl hover:shadow-[#d4af37]/30 transform hover:scale-105 transition-all duration-300"
             >
               Register Now
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -66,7 +66,7 @@ const CallToAction = () => {
 
           {/* Stats Card */}
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/20 to-transparent rounded-3xl blur-2xl" />
+            <div className="absolute inset-0 bg-linear-to-br from-[#d4af37]/20 to-transparent rounded-3xl blur-2xl" />
             <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 lg:p-10">
               <div className="text-center mb-8">
                 <div className="text-6xl font-bold text-[#d4af37] mb-2">50+</div>

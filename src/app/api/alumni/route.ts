@@ -1,17 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { unstable_cache } from 'next/cache';
 import { getGoogleSheets, SPREADSHEET_ID, SHEET_NAME } from '@/lib/google';
 import { AlumniMember } from '@/types/alumni';
 
-export async function GET(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const status = searchParams.get('status') || 'approved';
-    const search = searchParams.get('search') || '';
-    const practiceArea = searchParams.get('practiceArea') || '';
-    const batchYear = searchParams.get('batchYear') || '';
-    const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '12');
-
+const getAllMembers = unstable_cache(
+  async (): Promise<AlumniMember[]> => {
     const sheets = getGoogleSheets();
 
     // Fetch all data from the sheet
@@ -23,20 +16,11 @@ export async function GET(request: NextRequest) {
     const rows = response.data.values || [];
 
     if (rows.length <= 1) {
-      // No data (only headers or empty)
-      return NextResponse.json({
-        success: true,
-        data: {
-          members: [],
-          total: 0,
-          page,
-          totalPages: 0,
-        },
-      });
+      return [];
     }
 
     // Skip header row and map data
-    const allMembers: AlumniMember[] = rows.slice(1).map((row) => ({
+    return rows.slice(1).map((row) => ({
       id: row[0] || '',
       fullName: row[1] || '',
       batchYear: row[2] || '',
@@ -49,6 +33,22 @@ export async function GET(request: NextRequest) {
       registeredAt: row[9] || '',
       status: (row[10] as 'pending' | 'approved' | 'rejected') || 'pending',
     }));
+  },
+  ['alumni-data'],
+  { revalidate: false }
+);
+
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const status = searchParams.get('status') || 'approved';
+    const search = searchParams.get('search') || '';
+    const practiceArea = searchParams.get('practiceArea') || '';
+    const batchYear = searchParams.get('batchYear') || '';
+    const page = parseInt(searchParams.get('page') || '1');
+    const limit = parseInt(searchParams.get('limit') || '12');
+
+    const allMembers = await getAllMembers();
 
     // Filter by status
     let filteredMembers = allMembers.filter((member) => member.status === status);

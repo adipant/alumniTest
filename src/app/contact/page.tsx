@@ -14,18 +14,18 @@ const contactInfo = [
     primary: 'alumni@lawschool.edu',
     secondary: 'support@alumniconnect.edu',
   },
-  {
-    icon: Phone,
-    title: 'Call Us',
-    primary: '+1 (234) 567-8900',
-    secondary: 'Mon-Fri, 9:00 AM - 6:00 PM EST',
-  },
-  {
-    icon: MapPin,
-    title: 'Visit Us',
-    primary: '123 University Avenue',
-    secondary: 'Academic City, ST 12345',
-  },
+  // {
+  //   icon: Phone,
+  //   title: 'Call Us',
+  //   primary: '+1 (234) 567-8900',
+  //   secondary: 'Mon-Fri, 9:00 AM - 6:00 PM EST',
+  // },
+  // {
+  //   icon: MapPin,
+  //   title: 'Visit Us',
+  //   primary: '123 University Avenue',
+  //   secondary: 'Academic City, ST 12345',
+  // },
   {
     icon: Clock,
     title: 'Office Hours',
@@ -90,8 +90,8 @@ export default function ContactPage() {
 
       {/* Contact Info Cards */}
       <section className="py-12 -mt-16 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {contactInfo.map((info, index) => (
               <div
                 key={index}
@@ -166,7 +166,7 @@ export default function ContactPage() {
               </div>
 
               {/* Map */}
-              <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
+              {/* <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
                 <div className="h-64 bg-gray-200 relative">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2412648718453!2d-73.98731668459395!3d40.74844097932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
@@ -196,14 +196,14 @@ export default function ContactPage() {
                     <MapPin className="w-4 h-4" />
                   </a>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </section>
 
       {/* Emergency Contact */}
-      <section className="py-16 bg-gradient-to-r from-[#1a1a2e] to-[#2d2d4a]">
+      {/* <section className="py-16 bg-gradient-to-r from-[#1a1a2e] to-[#2d2d4a]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-8">
             <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -223,7 +223,7 @@ export default function ContactPage() {
             <p className="text-xs text-gray-500 mt-4">Available 24/7 for emergencies only</p>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

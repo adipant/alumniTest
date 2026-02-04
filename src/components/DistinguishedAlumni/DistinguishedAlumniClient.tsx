@@ -3,97 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { Award, Search, Star, ExternalLink, Linkedin, ChevronRight } from 'lucide-react';
-
-const distinguishedAlumni = [
-  {
-    id: 1,
-    name: 'Hon. Justice Sarah Mitchell',
-    batch: '1995',
-    title: 'Supreme Court Justice',
-    organization: 'Supreme Court of India',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face',
-    achievement: 'First woman Chief Justice, authored landmark judgments on constitutional rights',
-    category: 'Judiciary',
-    linkedin: '#',
-  },
-  {
-    id: 2,
-    name: 'Adv. James Richardson',
-    batch: '1998',
-    title: 'Senior Advocate',
-    organization: 'Supreme Court Bar Association',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
-    achievement: 'Argued 100+ cases before Supreme Court, Forbes Legal Powerlist 2025',
-    category: 'Litigation',
-    linkedin: '#',
-  },
-  {
-    id: 3,
-    name: 'Prof. Emily Chen',
-    batch: '2001',
-    title: 'Dean of Law School',
-    organization: 'Harvard Law School',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face',
-    achievement: 'Leading expert in Constitutional Law, authored 5 books on legal theory',
-    category: 'Academia',
-    linkedin: '#',
-  },
-  {
-    id: 4,
-    name: 'Adv. Michael Torres',
-    batch: '2003',
-    title: 'Managing Partner',
-    organization: 'Torres & Associates',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
-    achievement: 'Youngest senior advocate, specializes in corporate and M&A law',
-    category: 'Corporate Law',
-    linkedin: '#',
-  },
-  {
-    id: 5,
-    name: 'Adv. Amanda Foster',
-    batch: '1992',
-    title: 'Human Rights Advocate',
-    organization: 'International Court of Justice',
-    image: 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop&crop=face',
-    achievement: 'Represented landmark human rights cases, UN Human Rights Council member',
-    category: 'Human Rights',
-    linkedin: '#',
-  },
-  {
-    id: 6,
-    name: 'Adv. Robert Chang',
-    batch: '1997',
-    title: 'Intellectual Property Expert',
-    organization: 'World Intellectual Property Organization',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&crop=face',
-    achievement: 'Pioneer in cyber law and IP rights, advised Fortune 500 companies',
-    category: 'IP & Cyber Law',
-    linkedin: '#',
-  },
-  {
-    id: 7,
-    name: 'Hon. Justice Lisa Thompson',
-    batch: '2005',
-    title: 'High Court Judge',
-    organization: 'Delhi High Court',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face',
-    achievement: 'Youngest appointed High Court judge, expert in family and criminal law',
-    category: 'Judiciary',
-    linkedin: '#',
-  },
-  {
-    id: 8,
-    name: 'Adv. Marcus Johnson',
-    batch: '1990',
-    title: 'Attorney General',
-    organization: 'State Government',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face',
-    achievement: 'Former Solicitor General, led major constitutional reforms',
-    category: 'Government',
-    linkedin: '#',
-  },
-];
+import { distinguishedAlumni } from '@/lib/alumniData';
 
 const categories = ['All', 'Judiciary', 'Litigation', 'Corporate Law', 'Academia', 'Human Rights', 'IP & Cyber Law', 'Government'];
 
@@ -191,7 +101,7 @@ export default function DistinguishedAlumniClient() {
                       alt={alumni.name}
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#1a1a2e] via-[#1a1a2e]/40 to-transparent" />
 
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
@@ -214,7 +124,7 @@ export default function DistinguishedAlumniClient() {
                   {/* Content */}
                   <div className="p-5">
                     <div className="flex items-start gap-2 mb-4">
-                      <Star className="w-4 h-4 text-[#d4af37] flex-shrink-0 mt-0.5" />
+                      <Star className="w-4 h-4 text-[#d4af37] shrink-0 mt-0.5" />
                       <p className="text-sm text-gray-700 line-clamp-2">{alumni.achievement}</p>
                     </div>
 
@@ -245,13 +155,13 @@ export default function DistinguishedAlumniClient() {
       {/* CTA Section */}
       <section className="py-16 bg-[#1a1a2e]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Know a Distinguished Alumnus?</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Know someone from our alumni family?</h2>
           <p className="text-gray-400 mb-8">
-            Help us recognize outstanding alumni who have made significant contributions to the legal profession.
+            Help us bring everyone together and strengthen our community ties.
           </p>
           <Link
             href="/nominate"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-bold rounded-full hover:shadow-2xl hover:shadow-[#d4af37]/30 transform hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-bold rounded-full hover:shadow-2xl hover:shadow-[#d4af37]/30 transform hover:scale-105 transition-all duration-300"
           >
             Nominate an Alumni
             <ExternalLink className="w-5 h-5" />

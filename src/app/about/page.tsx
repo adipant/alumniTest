@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Scale, Target, Eye, Users, Award, Globe, BookOpen, Handshake } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Us | Law Alumni Connect',
+  title: 'About Us | Alumni Connect',
   description: 'Learn about our mission to connect law graduates and build a strong legal community.',
 };
 
@@ -15,26 +15,26 @@ const values = [
   {
     icon: Users,
     title: 'Community Building',
-    description: 'Fostering meaningful connections among alumni to create a supportive legal network.',
+    description: 'Fostering meaningful connections among alumni to create a supportive network.',
   },
   {
     icon: BookOpen,
     title: 'Continuous Learning',
-    description: 'Promoting lifelong legal education and professional development opportunities.',
+    description: 'Promoting lifelong legal and socio - economic education and professional development opportunities.',
   },
   {
     icon: Handshake,
     title: 'Mentorship',
-    description: 'Facilitating knowledge transfer between experienced practitioners and new graduates.',
+    description: 'Facilitating knowledge transfer between experienced professionals and new graduates.',
   },
 ];
 
 const milestones = [
-  { year: '1970', title: 'Foundation', description: 'Law School established with first graduating class' },
-  { year: '1985', title: 'Alumni Association', description: 'Formal alumni network created' },
-  { year: '2000', title: '5,000 Alumni', description: 'Reached significant alumni milestone' },
-  { year: '2015', title: 'Digital Platform', description: 'Launched online networking portal' },
-  { year: '2026', title: 'Global Network', description: 'Alumni in 50+ countries worldwide' },
+  // { year: '1970', title: 'Foundation', description: 'Law School established with first graduating class' },
+  // { year: '1985', title: 'Alumni Association', description: 'Formal alumni network created' },
+  // { year: '2000', title: '5,000 Alumni', description: 'Reached significant alumni milestone' },
+  { year: '2025', title: 'Digital Platform', description: 'The First Delhi chapter alumni reunion' },
+  { year: '2026', title: 'Alumni Association', description: 'Formal alumni network created' },
 ];
 
 const leadership = [
@@ -85,12 +85,10 @@ export default function AboutPage() {
               <span className="text-sm text-gray-300">Our Story</span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              About <span className="gradient-text">Law Alumni Connect</span>
+              About <span className="gradient-text">Alumni Connect</span>
             </h1>
             <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-              Building bridges between generations of legal excellence since 1970. 
-              We are more than an alumni network — we are a community committed to 
-              justice, mentorship, and professional growth.
+              A platform to connect with your college peers/seniors to foster meaningful future collaboration. We are more than an alumni network — we are a community committed to justice, mentorship, and professional growth.
             </p>
           </div>
         </div>
@@ -103,13 +101,13 @@ export default function AboutPage() {
             {/* Mission */}
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-20 h-20 bg-[#d4af37]/10 rounded-2xl -z-10" />
-              <div className="bg-gradient-to-br from-[#1a1a2e] to-[#2d2d4a] rounded-3xl p-8 text-white">
+              <div className="bg-linear-to-br from-[#1a1a2e] to-[#2d2d4a] rounded-3xl p-8 text-white">
                 <div className="w-16 h-16 bg-[#d4af37] rounded-2xl flex items-center justify-center mb-6">
                   <Target className="w-8 h-8 text-[#1a1a2e]" />
                 </div>
                 <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
                 <p className="text-gray-300 leading-relaxed">
-                  To cultivate a vibrant, engaged community of legal professionals that supports 
+                  To cultivate a vibrant, engaged community of professionals that supports 
                   career advancement, encourages knowledge sharing, and promotes excellence in 
                   the practice of law while upholding the highest ethical standards.
                 </p>
@@ -126,7 +124,7 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-bold mb-4 text-[#1a1a2e]">Our Vision</h2>
                 <p className="text-gray-600 leading-relaxed">
                   To be recognized as the premier legal alumni network globally, known for 
-                  fostering innovation in legal practice, advancing social justice, and 
+                  fostering innovation in legal practice policy making, advancing social justice, and 
                   producing leaders who shape the future of law and governance.
                 </p>
               </div>
@@ -143,7 +141,7 @@ export default function AboutPage() {
               Our Core <span className="text-[#d4af37]">Values</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              The principles that guide everything we do as a legal community
+              The principles that guide everything we do as a community
             </p>
           </div>
 
@@ -178,7 +176,7 @@ export default function AboutPage() {
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#d4af37] to-[#b8962f] hidden md:block" />
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-linear-to-b from-[#d4af37] to-[#b8962f] hidden md:block" />
 
             <div className="space-y-12">
               {milestones.map((milestone, index) => (
@@ -197,7 +195,7 @@ export default function AboutPage() {
                   </div>
 
                   {/* Timeline dot */}
-                  <div className="relative flex-shrink-0 hidden md:block">
+                  <div className="relative shrink-0 hidden md:block">
                     <div className="w-6 h-6 bg-[#d4af37] rounded-full border-4 border-white shadow-lg" />
                   </div>
 
@@ -210,7 +208,7 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership Team */}
-      <section className="py-20 bg-gray-50">
+      {/* <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#1a1a2e] mb-4">
@@ -249,7 +247,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Stats Section */}
       <section className="py-20 bg-[#1a1a2e]">
@@ -277,15 +275,14 @@ export default function AboutPage() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-[#1a1a2e] mb-4">
-            Join Our Legal Community
+            Join Our Community
           </h2>
           <p className="text-gray-600 mb-8 text-lg">
-            Be part of a legacy of legal excellence. Connect with fellow law graduates 
-            and shape the future of the legal profession.
+            Be part of a legacy of excellence. Connect with fellow ILS Law College graduates and shape the future of the legal profession.
           </p>
           <a
             href="/register"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-bold rounded-full hover:shadow-2xl hover:shadow-[#d4af37]/30 transform hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#d4af37] to-[#e8c547] text-[#1a1a2e] font-bold rounded-full hover:shadow-2xl hover:shadow-[#d4af37]/30 transform hover:scale-105 transition-all duration-300"
           >
             Register Now
           </a>

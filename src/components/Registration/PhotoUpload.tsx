@@ -47,7 +47,7 @@ const PhotoUpload = ({ batchYear, onImageChange, preview }: PhotoUploadProps) =>
                 className="w-full h-full object-cover"
               />
               {/* Batch Year Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent py-4 px-3">
+              <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent py-4 px-3">
                 <div className="flex flex-col items-center">
                   <span className="text-[#d4af37] text-xs font-semibold tracking-wider uppercase">
                     Batch of
@@ -99,7 +99,7 @@ const PhotoUpload = ({ batchYear, onImageChange, preview }: PhotoUploadProps) =>
         </button>
       )}
 
-      <p className="text-xs text-gray-500 mt-3 text-center max-w-[200px]">
+      <p className="text-xs text-gray-500 mt-3 text-center max-w-50]">
         Your photo will be displayed with your batch year in the alumni directory
       </p>
     </div>

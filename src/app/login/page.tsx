@@ -22,13 +22,13 @@ export default function LoginPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Left Side - Branding & Info */}
           <div className="hidden lg:block">
-            <div className="bg-gradient-to-br from-[#1a1a2e] to-[#2d2d4a] rounded-3xl p-12 text-white relative overflow-hidden">
+            <div className="bg-linear-to-br from-[#1a1a2e] to-[#2d2d4a] rounded-3xl p-12 text-white relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#d4af37]/10 rounded-full blur-3xl" />
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#d4af37]/5 rounded-full blur-3xl" />
               
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#d4af37] to-[#b8962f] rounded-xl flex items-center justify-center">
+                  <div className="w-14 h-14 bg-linear-to-br from-[#d4af37] to-[#b8962f] rounded-xl flex items-center justify-center">
                     <Scale className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -47,7 +47,7 @@ export default function LoginPage() {
                 <div className="space-y-4">
                   {features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
                         <feature.icon className="w-5 h-5 text-[#d4af37]" />
                       </div>
                       <span className="text-gray-300">{feature.text}</span>

@@ -7,9 +7,6 @@ export const metadata: Metadata = {
   description: 'Browse and connect with thousands of alumni from around the world.',
 };
 
-// Disable caching to always fetch fresh data
-export const dynamic = 'force-dynamic';
-
 export default function DirectoryPage() {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -27,7 +24,7 @@ export default function DirectoryPage() {
               <span className="text-sm text-gray-300">Connect with ILS Delhi Alumni</span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              ILS Delhi Alumni <span className="gradient-text">Directory</span>
+              Alumni <span className="gradient-text">Directory</span>
             </h1>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               Browse and connect with thousands of alumni from around the world. 
@@ -36,11 +33,11 @@ export default function DirectoryPage() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mt-12 max-w-3xl mx-auto">
             {[
-              { value: '10,000+', label: 'Registered Members' },
-              { value: '50+', label: 'Countries' },
-              { value: '100+', label: 'Industries' },
+              { value: '220+', label: 'Registered Members' },
+            //   { value: '50+', label: 'Countries' },
+            //   { value: '100+', label: 'Industries' },
               { value: '55', label: 'Batch Years' },
             ].map((stat, index) => (
               <div key={index} className="text-center p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl">

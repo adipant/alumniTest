@@ -6,31 +6,31 @@ import Link from 'next/link';
 const upcomingEvents = [
   {
     id: 1,
-    title: 'Annual Law Alumni Networking Gala',
-    date: 'March 15, 2026',
-    time: '6:00 PM',
-    location: 'Delhi High Court Auditorium',
+    title: 'ILSians Reunion Delhi 2026',
+    date: 'Feb 08, 2026',
+    time: '12:30 PM - 3:30 PM',
+    location: 'Neeti Bagh Club',
     type: 'Networking',
-    image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&h=400&fit=crop',
+    image: '/uploads/reunionEvent.png',
   },
-  {
-    id: 2,
-    title: 'Constitutional Law Seminar 2026',
-    date: 'April 8, 2026',
-    time: '10:00 AM',
-    location: 'ILS Delhi Campus',
-    type: 'Seminar',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
-  },
-  {
-    id: 3,
-    title: 'Legal Practice & Leadership Workshop',
-    date: 'April 22, 2026',
-    time: '2:00 PM',
-    location: 'Virtual + In-Person',
-    type: 'Workshop',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
-  },
+  // {
+  //   id: 2,
+  //   title: 'Constitutional Law Seminar 2026',
+  //   date: 'April 8, 2026',
+  //   time: '10:00 AM',
+  //   location: 'ILS Delhi Campus',
+  //   type: 'Seminar',
+  //   image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
+  // },
+  // {
+  //   id: 3,
+  //   title: 'Legal Practice & Leadership Workshop',
+  //   date: 'April 22, 2026',
+  //   time: '2:00 PM',
+  //   location: 'Virtual + In-Person',
+  //   type: 'Workshop',
+  //   image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
+  // },
 ];
 
 const UpcomingEvents = () => {
@@ -66,60 +66,62 @@ const UpcomingEvents = () => {
         </div>
 
         {/* Events Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="gap-8 flex items-center justify-center">
           {upcomingEvents.map((event) => (
-            <div
-              key={event.id}
-              className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#d4af37]/30 hover:shadow-xl transition-all duration-300"
-            >
-              {/* Event Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute top-4 left-4 px-3 py-1 bg-[#d4af37] rounded-full">
-                  <span className="text-xs font-bold text-[#1a1a2e]">{event.type}</span>
-                </div>
-              </div>
+          <div
+  key={event.id}
+  className="group relative bg-white w-70 rounded-3xl overflow-hidden border border-gray-200 
+             hover:shadow-2xl hover:shadow-[#d4af37]/20 transition-all duration-500 
+             flex flex-col h-full cursor-pointer"
+>
+  {/* Image Section - Centered Focus */}
+  <div className="relative h-48 overflow-hidden shrink-0">
+    <img
+      src={event.image}
+      alt={event.title}
+      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+    />
+    {/* Type Badge - Center-Top Floating */}
+    <div className="absolute top-3 inset-x-0 flex justify-center">
+      <span className="px-3 py-1 bg-white/80 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-[#1a1a2e] rounded-full shadow-sm">
+        {event.type}
+      </span>
+    </div>
+  </div>
 
-              {/* Event Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-[#1a1a2e] mb-4 group-hover:text-[#d4af37] transition-colors">
-                  {event.title}
-                </h3>
-                
-                <div className="space-y-3 text-sm text-gray-600">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-[#d4af37]/10 rounded-lg flex items-center justify-center">
-                      <Calendar className="w-4 h-4 text-[#d4af37]" />
-                    </div>
-                    <span>{event.date}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-[#d4af37]/10 rounded-lg flex items-center justify-center">
-                      <Clock className="w-4 h-4 text-[#d4af37]" />
-                    </div>
-                    <span>{event.time}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-[#d4af37]/10 rounded-lg flex items-center justify-center">
-                      <MapPin className="w-4 h-4 text-[#d4af37]" />
-                    </div>
-                    <span>{event.location}</span>
-                  </div>
-                </div>
+  {/* Content Section - Centered Text Alignment */}
+  <div className="p-5 flex flex-col items-center text-center flex-1">
+    <h3 className="text-[17px] font-extrabold text-[#1a1a2e] mb-2 leading-tight group-hover:text-[#d4af37] transition-colors line-clamp-2">
+      {event.title}
+    </h3>
+    
+    <div className="flex flex-col items-center gap-1.5 mb-4">
+      {/* Combined Date/Time for a clean look */}
+      <div className="flex items-center gap-2 text-[#d4af37]">
+        <Calendar className="w-3.5 h-3.5" />
+        <span className="text-xs font-semibold uppercase tracking-tighter">
+          {event.date} • {event.time}
+        </span>
+      </div>
 
-                <Link
-                  href={`/events/${event.id}`}
-                  className="mt-6 inline-flex items-center gap-2 text-[#1a1a2e] font-semibold hover:text-[#d4af37] transition-colors group/link"
-                >
-                  Learn More
-                  <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
+      {/* Location with a subtle gray */}
+      <div className="flex items-center gap-1 text-gray-400">
+        <MapPin className="w-3 h-3" />
+        <span className="text-[11px] font-medium max-w-[200px] truncate">
+          {event.location}
+        </span>
+      </div>
+    </div>
+
+    {/* Elegant Action Button */}
+    {/* <button className="mt-auto w-full py-2.5 bg-[#1a1a2e] text-white text-[12px] font-bold rounded-xl 
+                       group-hover:bg-[#d4af37] group-hover:text-[#1a1a2e] transition-all duration-300
+                       flex items-center justify-center gap-2">
+      Book Now
+      <ArrowRight className="w-3.5 h-3.5" />
+    </button> */}
+  </div>
+</div>
           ))}
         </div>
       </div>

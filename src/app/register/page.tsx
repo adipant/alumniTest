@@ -58,7 +58,7 @@ export default function RegisterPage() {
                 key={index}
                 className="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl"
               >
-                <div className="w-12 h-12 bg-[#d4af37]/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-[#d4af37]/20 rounded-xl flex items-center justify-center shrink-0">
                   <feature.icon className="w-6 h-6 text-[#d4af37]" />
                 </div>
                 <div>

@@ -49,9 +49,9 @@ const Navbar = () => {
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold text-white tracking-tight">
-                ILS Delhi Alumni<span className="text-[#d4af37] ml-1">Connect</span>
+                ILSians Delhi
               </span>
-              <span className="text-xs text-gray-400 -mt-1">Excellence Together</span>
+              <span className="text-xs text-gray-400 -mt-1">An Initiative of ILS law College Alumni, Delhi Chapter</span>
             </div>
           </Link>
 
