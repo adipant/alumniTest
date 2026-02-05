@@ -23,8 +23,8 @@ const Footer = () => {
 
   const resourceLinks = [
     { name: 'About Us', href: '/about' },
-    { name: 'Events', href: '/events' },
-    { name: 'News', href: '/news' },
+    // { name: 'Events', href: '/events' },
+    // { name: 'News', href: '/news' },
     { name: 'Contact', href: '/contact' },
   ];
 

@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback,useMemo} from 'react';
 import { Search, Filter, Briefcase, GraduationCap, Linkedin, Mail, Phone, ChevronDown, Loader2 } from 'lucide-react';
 import { AlumniMember } from '@/types/alumni';
+
 
 const practiceAreas = [
   'All Areas',
@@ -47,6 +48,23 @@ export default function DirectoryClient({ initialMembers = [] }: DirectoryClient
   const [totalPages, setTotalPages] = useState(1);
   const [total, setTotal] = useState(0);
 
+  const [sortBy, setSortBy] = useState<'recent' | 'batch' | 'alpha'>('recent');
+  const sortedMembers = useMemo(() => {
+  const list = [...members];
+
+  if (sortBy === 'alpha') {
+    list.sort((a, b) => a.fullName.localeCompare(b.fullName));
+  }
+
+  if (sortBy === 'batch') {
+    list.sort((a, b) => Number(b.batchYear) - Number(a.batchYear));
+  }
+
+  // 'recent' → keep API order
+  return list;
+}, [members, sortBy]);
+
+
   const fetchMembers = useCallback(async () => {
     try {
       setLoading(true);
@@ -82,7 +100,7 @@ export default function DirectoryClient({ initialMembers = [] }: DirectoryClient
 
   useEffect(() => {
     fetchMembers();
-  }, [fetchMembers]);
+  }, [page, search, selectedPracticeArea, selectedBatchYear]);
 
   // Debounce search
   useEffect(() => {
@@ -126,7 +144,7 @@ export default function DirectoryClient({ initialMembers = [] }: DirectoryClient
             </div>
 
             {/* Filters */}
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-wrap">
               <div className="relative">
                 <select
                   value={selectedPracticeArea}
@@ -157,10 +175,10 @@ export default function DirectoryClient({ initialMembers = [] }: DirectoryClient
                 <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
               </div>
 
-              <button className="flex items-center gap-2 px-4 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
+              {/* <button className="flex items-center gap-2 px-4 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
                 <Filter className="w-5 h-5 text-gray-600" />
                 <span className="hidden sm:inline text-gray-600">More Filters</span>
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -186,11 +204,16 @@ export default function DirectoryClient({ initialMembers = [] }: DirectoryClient
             </p>
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Sort by:</span>
-              <select className="text-sm border-none focus:ring-0 font-medium text-[#1a1a2e] cursor-pointer">
-                <option>Most Recent</option>
-                <option>Batch Year</option>
-                <option>Alphabetical</option>
-              </select>
+             <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value as any)}
+                    className="text-sm border-none focus:ring-0 font-medium text-[#1a1a2e] cursor-pointer"
+                    >
+                    <option value="recent">Most Recent</option>
+                    <option value="batch">Batch Year</option>
+                    <option value="alpha">Alphabetical</option>
+                    </select>
+
             </div>
           </div>
 
@@ -255,7 +278,7 @@ export default function DirectoryClient({ initialMembers = [] }: DirectoryClient
           {/* Alumni Grid */}
           {!loading && !error && members.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {members.map((member) => (
+              {sortedMembers.map((member) => (
                 <div
                   key={member.id}
                   className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-gray-100 hover:border-[#d4af37]/30 transition-all duration-300"

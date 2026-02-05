@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "AlumniConnect | Where Excellence Meets Legacy",
   description: "Join a distinguished community of alumni who are shaping the future. Connect, collaborate, and celebrate our shared journey of excellence.",
   keywords: ["alumni", "network", "community", "university", "graduates", "professional network"],
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
