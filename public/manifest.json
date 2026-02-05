@@ -1,0 +1,21 @@
+{
+  "name": "ILSians Delhi",
+  "short_name": "ILSians Delhi",
+  "description": "Join a distinguished community of alumni who are shaping the future. Connect, collaborate, and celebrate our shared journey of excellence.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/images/testImg.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/images/testImg.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ]
+}

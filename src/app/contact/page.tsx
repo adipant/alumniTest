@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import ContactForm from '@/components/Contact/ContactForm';
 import { Mail, Phone, MapPin, Clock, MessageSquare } from 'lucide-react';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Law Alumni Connect',
@@ -11,8 +12,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email Us',
-    primary: 'alumni@lawschool.edu',
-    secondary: 'support@alumniconnect.edu',
+    primary: 'delhi.ilsians@gmail.com',
+    secondary: 'support@ilsdelhi.edu',
   },
   // {
   //   icon: Phone,
@@ -156,12 +157,12 @@ export default function ContactPage() {
                   ))}
                 </div>
                 <div className="mt-6 pt-6 border-t border-gray-100">
-                  <a
-                    href="/faq"
+                  <Link
+                    href="#"
                     className="text-sm font-medium text-[#d4af37] hover:text-[#b8962f] transition-colors"
                   >
                     View All FAQs →
-                  </a>
+                  </Link>
                 </div>
               </div>
 

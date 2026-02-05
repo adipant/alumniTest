@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AlumniConnect | Where Excellence Meets Legacy",
+  title: "ILSians Delhi | Where Excellence Meets Legacy",
   description: "Join a distinguished community of alumni who are shaping the future. Connect, collaborate, and celebrate our shared journey of excellence.",
   keywords: ["alumni", "network", "community", "university", "graduates", "professional network"],
   manifest: "/manifest.json",
@@ -36,8 +36,10 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="ILSians Delhi" />
         <link rel="apple-touch-icon" href="/images/testImg.jpg" />
-        {/* Fallback favicon */}
-        <link rel="icon" href="/images/testImg.jpg" />
+        {/* Android support */}
+        <meta name="application-name" content="ILSians Delhi" />
+        {/* Favicon */}
+        <link rel="icon" sizes="192x192" href="/images/testImg.jpg" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
